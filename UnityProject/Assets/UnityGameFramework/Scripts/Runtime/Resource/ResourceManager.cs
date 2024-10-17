@@ -655,6 +655,7 @@ namespace GameFramework.Resource
 
             if (cancelOrFailed)
             {
+                _assetLoadingList.Remove(assetObjectKey);
                 return null;
             }
             
@@ -692,6 +693,7 @@ namespace GameFramework.Resource
 
             if (cancelOrFailed)
             {
+                _assetLoadingList.Remove(assetObjectKey);
                 return null;
             }
 
@@ -748,6 +750,8 @@ namespace GameFramework.Resource
 
             if (!string.IsNullOrEmpty(assetInfo.Error))
             {
+                _assetLoadingList.Remove(assetObjectKey);
+                
                 string errorMessage = Utility.Text.Format("Can not load asset '{0}' because :'{1}'.", location, assetInfo.Error);
                 if (loadAssetCallbacks.LoadAssetFailureCallback != null)
                 {
@@ -836,6 +840,8 @@ namespace GameFramework.Resource
 
             if (!string.IsNullOrEmpty(assetInfo.Error))
             {
+                _assetLoadingList.Remove(assetObjectKey);
+                
                 string errorMessage = Utility.Text.Format("Can not load asset '{0}' because :'{1}'.", location, assetInfo.Error);
                 if (loadAssetCallbacks.LoadAssetFailureCallback != null)
                 {
@@ -935,6 +941,7 @@ namespace GameFramework.Resource
         #region 资源回收
         public void UnloadUnusedAssets()
         {
+            m_AssetPool.ReleaseAllUnused();
             foreach (var package in PackageMap.Values)
             {
                 if (package is { InitializeStatus: EOperationStatus.Succeed })
@@ -942,7 +949,6 @@ namespace GameFramework.Resource
                     package.UnloadUnusedAssets();
                 }
             }
-            m_AssetPool.ReleaseAllUnused();
         }
 
         public void ForceUnloadAllAssets()
