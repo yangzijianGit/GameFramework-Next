@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityGameFramework.Runtime;
 using YooAsset;
+using UnityEngine.SceneManagement;
 
 namespace GameFramework.Scene
 {
@@ -406,9 +406,9 @@ namespace GameFramework.Scene
         #region LoadScene
         private string _currentMainSceneName = string.Empty;
         
-        private SceneHandle _currentMainScene;
+        private YooAsset.SceneHandle _currentMainScene;
         
-        private readonly Dictionary<string,SceneHandle> _subScenes = new Dictionary<string, SceneHandle>();
+        private readonly Dictionary<string,YooAsset.SceneHandle> _subScenes = new();
 
         /// <summary>
         /// 当前主场景名称。
@@ -430,7 +430,7 @@ namespace GameFramework.Scene
             return $"{packageName}/{location}";
         }
         
-        private SceneHandle GetSceneHandle(string sceneAssetName, LoadSceneMode sceneMode = LoadSceneMode.Single, bool suspendLoad = false, int priority = 100, string packageName = "")
+        private YooAsset.SceneHandle GetSceneHandle(string sceneAssetName, LoadSceneMode sceneMode = LoadSceneMode.Single, bool suspendLoad = false, int priority = 100, string packageName = "")
         {
             if (string.IsNullOrEmpty(packageName))
             {
@@ -482,7 +482,7 @@ namespace GameFramework.Scene
             
             float duration = Time.time;
 
-            SceneHandle sceneHandle = null;
+            YooAsset.SceneHandle sceneHandle = null;
             
             if (sceneMode == LoadSceneMode.Additive)
             {
@@ -578,7 +578,7 @@ namespace GameFramework.Scene
                 return;
             }
             
-            _subScenes.TryGetValue(sceneAssetName, out SceneHandle subScene);
+            _subScenes.TryGetValue(sceneAssetName, out YooAsset.SceneHandle subScene);
             
             if (subScene != null)
             {
@@ -642,7 +642,7 @@ namespace GameFramework.Scene
                 }
                 return false;
             }
-            _subScenes.TryGetValue(sceneAssetName, out SceneHandle subScene);
+            _subScenes.TryGetValue(sceneAssetName, out YooAsset.SceneHandle subScene);
             if (subScene != null)
             {
                 return subScene.ActivateScene();
@@ -666,7 +666,7 @@ namespace GameFramework.Scene
                 }
                 return false;
             }
-            _subScenes.TryGetValue(sceneAssetName, out SceneHandle subScene);
+            _subScenes.TryGetValue(sceneAssetName, out YooAsset.SceneHandle subScene);
             if (subScene != null)
             {
                 return subScene.UnSuspend();
@@ -690,7 +690,7 @@ namespace GameFramework.Scene
                 }
                 return true;
             }
-            _subScenes.TryGetValue(sceneAssetName, out SceneHandle subScene);
+            _subScenes.TryGetValue(sceneAssetName, out YooAsset.SceneHandle subScene);
             if (subScene != null)
             {
                 return subScene.IsMainScene();
