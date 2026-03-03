@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using GameBase;
 using GameLogic;
+using GameMain;
 using GameFramework;
 using UnityGameFramework.Runtime;
 
@@ -29,7 +30,23 @@ public partial class GameApp
     /// </summary>
     private void RegisterAllSystem()
     {
+        // 注册任务系统
+        AddLogicSys(TaskSystem.Instance);
         
+        // 注册成就系统
+        AddLogicSys(AchievementSystem.Instance);
+        
+        // 注册签到系统
+        AddLogicSys(SignInSystem.Instance);
+        
+        // 注册活动系统
+        AddLogicSys(ActivitySystem.Instance);
+        
+        // 注册社交系统
+        AddLogicSys(SocialSystem.Instance);
+        
+        // 注册排行榜系统
+        AddLogicSys(LeaderboardSystem.Instance);
     }
 
     /// <summary>
