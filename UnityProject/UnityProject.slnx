@@ -1,9 +1,10 @@
 ﻿<Solution>
   <Project Path="UnityGameFramework.Runtime.csproj" />
-  <Project Path="GameMain.Runtime.csproj" />
   <Project Path="GameLogic.csproj" />
+  <Project Path="GameMain.Runtime.csproj" />
   <Project Path="UnityGameFramework.Editor.csproj" />
   <Project Path="GameBase.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="GameProto.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
 </Solution>

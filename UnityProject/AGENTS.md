@@ -4,7 +4,7 @@ This file provides essential information for agentic coding agents working with 
 
 ## Project Overview
 
-This is a Unity 6000.3.4f1 project using a custom Game Framework with hot-reload support via HybridCLR, resource management via YooAsset, and async programming via UniTask. The project follows a modular architecture with clear separation between runtime code, hot-fix code, and framework components.
+This is a Unity 6000.3.10f1 project using a custom Game Framework with hot-reload support via HybridCLR, resource management via YooAsset, and async programming via UniTask. The project follows a modular architecture with clear separation between runtime code, hot-fix code, and framework components.
 
 ## Build and Test Commands
 
