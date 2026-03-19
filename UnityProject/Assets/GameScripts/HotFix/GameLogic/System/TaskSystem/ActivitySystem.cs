@@ -378,7 +378,7 @@ namespace GameMain
                     data = new PlayerActivityData
                     {
                         State = ActivityState.NotStarted,
-                        ActivityId = data.ActivityId,
+                        ActivityId = config.Id,
                         MaxProgress = 100, // 默认值
                         ClaimedRewardIds = new List<string>(),
                         JoinTime = now
